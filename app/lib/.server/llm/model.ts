@@ -6,6 +6,8 @@ import { createOpenAI } from '@ai-sdk/openai';
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { ollama } from 'ollama-ai-provider';
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { createOllama } from 'ollama-ai-provider';
+
 
 export function getAnthropicModel(apiKey: string, model: string) {
   const anthropic = createAnthropic({
@@ -41,6 +43,9 @@ export function getGroqModel(apiKey: string, model: string) {
 }
 
 export function getOllamaModel(model: string) {
+  const ollama = createOllama({
+    baseURL: "http://localhost:11434/api"
+  });
   return ollama(model);
 }
 
